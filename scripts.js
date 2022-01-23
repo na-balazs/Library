@@ -1,7 +1,6 @@
 let myLibrary = [];
-let lineBreak = '\n';
 
-function Book(title, author, pages, read) {
+function book(title, author, pages, read) {
   this.title = title
   this.author = author
   this.pages = pages
@@ -13,15 +12,15 @@ function addBookToLibrary(newBook) {
 }
 
 //for testing purposes
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-const Book1 = new Book("Never have I ever", "Seom Them", 1789, "not read yet");
-const Book2 = new Book("3 days around the world", "Thomas Franklin", 365, "read");
+const theHobbit = new book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+const Book1 = new book("Never have I ever", "Seom Them", 1789, "not read yet");
+const Book2 = new book("3 days around the world", "Thomas Franklin", 365, "read");
 
 //Generating books for testing purposes
-myLibrary.push(theHobbit);
+/* myLibrary.push(theHobbit);
 myLibrary.push(Book1);
 myLibrary.push(Book2);
-console.log(myLibrary);
+console.log(myLibrary); */
 
 const container = document.querySelector('#cards');
 const div = document.createElement('div');
@@ -51,6 +50,7 @@ function createCard(book) {
   }
 }
 
+
 /* function toggleCardStyle() {
   let element = document.querySelector(".inner-cards");
   element.classList.toggle("inner-cards");
@@ -68,3 +68,41 @@ function createCard(book) {
 document.getElementById("newBook").addEventListener("click", () => {
   createCard(myLibrary);
 });
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("newBook");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+function addBook() {
+  let x = document.getElementById("author").value;
+  let parseBook = new book(x);
+  console.log(parseBook);
+  myLibrary.push(parseBook);
+}
+
+document.getElementById("save").addEventListener("click", () => {
+  createCard(myLibrary);
+  modal.style.display = "none";
+})
