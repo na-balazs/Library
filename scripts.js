@@ -1,4 +1,5 @@
 let myLibrary = [];
+let parseBook = [];
 
 function book(title, author, pages, read) {
   this.title = title
@@ -39,16 +40,16 @@ container.appendChild(div);
 } */
 
 function createCard(book) {
-  for (let i=0; i<book.length; i++) {
+  //for (let i=0; i<book.length; i++) {
       let div = document.createElement('div');
-      Object.values(book[i]).forEach(function(val) {
+      Object.values(book/*[i]*/).forEach(function(val) {
         div.innerHTML += val + '<br />';
       });
       div.classList.toggle("inner-cards");
-      // mainDiv.setAttribute("id", "Ide találjak ki majd vmi spéci algoritmust");
+      div.setAttribute("id", myLibrary.length);
       container.appendChild(div);
   }
-}
+//}
 
 
 /* function toggleCardStyle() {
@@ -65,9 +66,9 @@ function createCard(book) {
   console.log(bacy);
 } */
 
-document.getElementById("newBook").addEventListener("click", () => {
+/* document.getElementById("newBook").addEventListener("click", () => {
   createCard(myLibrary);
-});
+}); */
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -95,14 +96,26 @@ window.onclick = function(event) {
   }
 }
 
+
 function addBook() {
-  let x = document.getElementById("author").value;
-  let parseBook = new book(x);
+  let xAuthor = document.getElementById("author").value;
+  let xTitle = document.getElementById("title").value;
+  let xPages = document.getElementById("pages").value;
+  let xCheckbox = "";
+  
+  if (document.getElementById("read").innerHTML.checked == "true") {
+    xCheckbox = "Read"
+  } else {
+    xCheckbox = "Not read yet"
+  }
+
+  parseBook = new book(xAuthor, xTitle, xPages, xCheckbox);
   console.log(parseBook);
   myLibrary.push(parseBook);
 }
 
 document.getElementById("save").addEventListener("click", () => {
-  createCard(myLibrary);
+  addBook();
+  createCard(parseBook);
   modal.style.display = "none";
 })
