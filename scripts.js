@@ -1,5 +1,6 @@
 let myLibrary = [];
 let parseBook = [];
+let exa = "";
 
 function book(title, author, pages, read) {
   this.title = title
@@ -101,12 +102,15 @@ function addBook() {
   let xAuthor = document.getElementById("author").value;
   let xTitle = document.getElementById("title").value;
   let xPages = document.getElementById("pages").value;
-  let xCheckbox = "";
+  let xCheckbox = document.querySelector("#read").checked;
+  console.log(xCheckbox);
   
-  if (document.getElementById("read").innerHTML.checked == "true") {
-    xCheckbox = "Read"
+  if (xCheckbox) {
+    console.log(xCheckbox);
+    xCheckbox = "Read";
   } else {
-    xCheckbox = "Not read yet"
+    console.log(xCheckbox);
+    xCheckbox = "Not read yet";
   }
 
   parseBook = new book(xAuthor, xTitle, xPages, xCheckbox);
@@ -118,4 +122,9 @@ document.getElementById("save").addEventListener("click", () => {
   addBook();
   createCard(parseBook);
   modal.style.display = "none";
+})
+
+document.getElementById("read").addEventListener("click", () =>{
+exa = document.querySelector("#read").checked;
+//console.log(exa);
 })
