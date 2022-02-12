@@ -92,7 +92,7 @@ header, button, footer {
     display: flex;
     flex-direction: column;
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 4px solid black;
     border-radius: 8px;
@@ -130,7 +130,7 @@ header, button, footer {
     justify-content: space-between;
   }
 
-  #close-flex{
+  #close-flex, #read-flex, #save-flex{
     justify-content: flex-end;
   }
 
@@ -139,4 +139,12 @@ header, button, footer {
     padding: 9px 15px;
     border: 3px solid;
     border-radius: 8px;
+  }
+
+  #save:hover {
+    background-color: #23ce6a65;
+    padding: 9px 15px;
+    border: 3px solid;
+    border-radius: 8px;
+    cursor: pointer;
   }

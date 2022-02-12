@@ -43,11 +43,13 @@ container.appendChild(div);
 function createCard(book) {
   //for (let i=0; i<book.length; i++) {
       let div = document.createElement('div');
+      div.innerHTML += '<span class="close" onclick="removeCard(this.id)">&times;</span>'
       Object.values(book/*[i]*/).forEach(function(val) {
         div.innerHTML += val + '<br />';
       });
       div.classList.toggle("inner-cards");
       div.setAttribute("id", myLibrary.length);
+      div.childNodes[0].setAttribute("id", myLibrary.length);
       container.appendChild(div);
   }
 //}
@@ -128,3 +130,8 @@ document.getElementById("read").addEventListener("click", () =>{
 exa = document.querySelector("#read").checked;
 //console.log(exa);
 })
+
+function removeCard(val) {
+  let cardToBeRemoved = document.getElementById(val)
+  cardToBeRemoved.remove();
+}
